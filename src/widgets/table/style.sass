@@ -1,0 +1,122 @@
+.table
+  display: grid
+  grid-template-rows: max-content 1fr
+  overflow: hidden
+  padding: 10px
+  .checkbox 
+    display: inline-block
+    position: relative
+    cursor: pointer
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    input 
+      position: absolute
+      opacity: 0
+      cursor: pointer
+      height: 0
+      width: 0
+      &:checked ~ .checkbox__checkmark 
+        background-color: #494c4fe7
+        &::after
+          opacity: 1
+    &:hover
+      input ~ .checkbox__checkmark 
+        // background-color: #eee
+        &:checked ~ .checkbox__checkmark 
+          background-color: #494c4fe7
+    .checkbox__checkmark
+      top: 2px
+      left: 0
+      height: 20px
+      width: 20px
+      background-color: #eee
+      transition: background-color 0.25s ease
+      border-radius: 4px
+      &::after
+        content: ""
+        position: absolute
+        left: 7px
+        top: 2px
+        width: 5px
+        height: 10px
+        border: solid #ffffff
+        border-width: 0 2px 2px 0
+        transform: rotate(45deg)
+        opacity: 0
+        transition: opacity 0.25s ease  
+  .table-body
+    height: 100%
+    overflow-y: auto
+    border-top: 1px solid #eee
+  .checkbox-column
+    width: 20px
+    height: 20px
+  table
+    width: 100%
+    table-layout: fixed
+    border: none
+    border-collapse: collapse
+    thead 
+      height: max-content
+      th 
+        font-weight: bold
+        text-align: left
+        border: none
+        padding: 5px
+        background: #3f62bf
+        color: #ffffff
+        font-size: 14px
+        border-left: 1px solid #ddd
+        border-right: 1px solid #ddd
+        position: relative
+        &:last-child
+          padding-right: 0
+    .delete-column
+      width: 25px
+      
+    tbody
+      tr
+        &[aria-selected="true"]
+          background-color: #6c92f761 !important
+          td
+            border-color: #ffffff
+        &:first-child
+          td
+            border-top: 0
+          
+ 
+      td 
+        text-align: left
+        border-left: 1px solid #ddd
+        border-right: 1px solid #ddd
+        padding: 5px
+        height: max-content
+        font-size: 14px
+        vertical-align: top
+        word-wrap: break-word
+        border: 1px solid #dddddd
+        color: #000
+        &:last-child
+          padding-right: 0
+        .delete-icon
+          width: 20px
+          height: 20px
+          padding: 0
+          background: none
+          border: none
+          img
+            width: 100%
+            height: 100%
+            opacity: 1
+            transition: fill 0.3s
+      tr
+        // background: #f3f3f3
+    
+  ::-webkit-scrollbar 
+    width: 6px
+  ::-webkit-scrollbar-track 
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3) 
+  ::-webkit-scrollbar-thumb 
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3) 
